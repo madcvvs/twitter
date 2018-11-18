@@ -9,24 +9,14 @@ headers = {
     'Referer' : 'http://sportsbeta.ladbrokes.com/football',
 }
 
-def usage():
-    print("usage: twitter.py [-u]")
-    print("optional arguments:")
-    print("\t-h, --help     show this help message and exit")
-    print("\t-u, --url      url for tweet to tamper with")
-    print("\t-v, --verbose  toggle verbose")
+def Main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-u", "--url", required=True, help="URL to tweet to tamper with", action="store_true")
+    parser.add_argument("-v", "--verbose", required=False, dest="verbose")
+    args = parser.parse_args()
 
-parser = argparse.ArgumentParser()
-parser.add_argument("help")
-parser.add_argument("u")
-parser.add_argument("v")
-args = parser.parse_args()
+    if args.verbose:
+        verbose = True
 
-if args.help:
-    usage()
-
-elif args.u:
-    url = True
-
-elif args.v:
-    verbose = True
+if __name__ == '__main__':
+    Main()
