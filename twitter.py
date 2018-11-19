@@ -1,5 +1,5 @@
 #!/usr/bin/python
-import sys, argparse, requests, threading
+import sys, argparse, requests, asyncio, concurrent.futures
 
 params = {'id': id, 'tweet_stat_count': '0'}
 
@@ -8,7 +8,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('-u', '--url', metavar='url', nargs='+', required=True, help="URL to tweet to tamper with")
     parser.add_argument('-c', '--csrf', metavar='csrf', nargs='+', required=True, help="CSRF token to your twitter account")
-    parser.add_argument('-C', '--cookie', metavar='cookie', nargs='+', required=True, help="Cookie to your twitter account")
+    parser.add_argument('-C', '--cookie', metavar='cookie', nargs='+', required=True, help="cookie to your twitter account")
     parser.add_argument('-v', '--verbose', required=False, dest='verbose')
     args = parser.parse_args()
 
@@ -46,7 +46,7 @@ def main():
         #response = requests.post("https://api.twitter.com/1.1/favorites/create.json", params=params, headers=headers)
         #response = requests.post("https://api.twitter.com/1.1/favorites/destroy.json", params=params, headers=headers)
         #print(response)
-        '''
+
         async def create():
             response = requests.post("https://api.twitter.com/1.1/favorites/create.json", params=params, headers=headers)
             print("CREATE: " + str(response))
@@ -64,7 +64,7 @@ def main():
         )
         print("exit")
         loop.close()
-        '''
+
         #print(asyncio.run(create()))
         #print(asyncio.run(destroy()))
 
