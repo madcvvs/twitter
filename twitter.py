@@ -14,7 +14,7 @@ def main():
 
     headers = {
         'authority': 'api.twitter.com',
-        'method': 'POST',
+        'method': 'test',
         'path': '/1.1/favorites/destroy.json',
         'scheme': 'https',
         'accept': '*/*',
